@@ -81,7 +81,7 @@
 17. `addauth scheme auth`  
     注册会话授权信息  
     `schema: ip:digest`  
-    `auth: ip|username:password `
+    `auth: ip|username:password`
 
 18. `history`  
     历史命令  

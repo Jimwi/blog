@@ -4,7 +4,10 @@ nav:
   - Home: index.md
   - zookeeper学习: 
     - zookeeper常用命令: zookeeper/command.md
-  # - dubbo学习:
-    # - draft: dubbo/draft.md
+  - dubbo学习:
+    - draft: dubbo/draft.md
+    - ChannelBuffer: dubbo/channelBuffer.md
   - docker 学习笔记: 
     - getStarted: docker/getStarted.md
+  - 加解密:
+    - java提供的加解密工具类: cipher/java-cipher.md

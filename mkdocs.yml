@@ -4,7 +4,7 @@ nav:
   - Home: index.md
   - zookeeper学习: 
     - zookeeper常用命令: zookeeper/command.md
-    - curator: zookeeper/curator.md
+    - curator: zookeeper/curator 学习笔记.md
   - dubbo学习:
     - draft: dubbo/draft.md
     - ChannelBuffer: dubbo/channelBuffer.md

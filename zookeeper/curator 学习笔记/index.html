@@ -31,21 +31,21 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="/assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
     
     
       
-        <title>Fucking Chen's Blog</title>
+        <title>curator实现分布式锁 - Fucking Chen's Blog</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/application.750b69bd.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.750b69bd.css">
       
       
     
     
-      <script src="/assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
     
     
       
@@ -54,7 +54,7 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="/assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
     
@@ -75,12 +75,16 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#curator" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="/." title="Fucking Chen's Blog" class="md-header-nav__button md-logo">
+        <a href="../.." title="Fucking Chen's Blog" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -96,7 +100,7 @@
               Fucking Chen's Blog
             </span>
             <span class="md-header-nav__topic">
-              
+              curator实现分布式锁
             </span>
           
         </div>
@@ -148,7 +152,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="/." title="Fucking Chen's Blog" class="md-nav__button md-logo">
+    <a href="../.." title="Fucking Chen's Blog" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -164,7 +168,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/." title="Home" class="md-nav__link">
+    <a href="../.." title="Home" class="md-nav__link">
       Home
     </a>
   </li>
@@ -195,7 +199,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zookeeper/command.md/" title="zookeeper常用命令" class="md-nav__link">
+    <a href="../command.md/" title="zookeeper常用命令" class="md-nav__link">
       zookeeper常用命令
     </a>
   </li>
@@ -207,7 +211,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/zookeeper/curator.md" title="curator" class="md-nav__link">
+    <a href="../curator.md" title="curator" class="md-nav__link">
       curator
     </a>
   </li>
@@ -243,7 +247,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/dubbo/draft/" title="draft" class="md-nav__link">
+    <a href="../../dubbo/draft/" title="draft" class="md-nav__link">
       draft
     </a>
   </li>
@@ -255,7 +259,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/dubbo/channelBuffer/" title="ChannelBuffer" class="md-nav__link">
+    <a href="../../dubbo/channelBuffer/" title="ChannelBuffer" class="md-nav__link">
       ChannelBuffer
     </a>
   </li>
@@ -291,7 +295,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/docker/getStarted/" title="getStarted" class="md-nav__link">
+    <a href="../../docker/getStarted/" title="getStarted" class="md-nav__link">
       getStarted
     </a>
   </li>
@@ -327,7 +331,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/cipher/java-cipher/" title="java提供的加解密工具类" class="md-nav__link">
+    <a href="../../cipher/java-cipher/" title="java提供的加解密工具类" class="md-nav__link">
       java提供的加解密工具类
     </a>
   </li>
@@ -345,12 +349,89 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="接口" class="md-nav__link">
+    接口
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
-
+                
+                
+                <h1 id="curator">curator实现分布式锁</h1>
+<p>curator实现分布式锁的api在curator-recipes模块的org.apache.curator.framework.recipes.locks下</p>
+<h2 id="_1">接口</h2>
+<ol>
+<li>InterProcessLock  分布式锁的接口，有3个实现</li>
+</ol>
+<p><code>java
+   InterProcessMutex
+   InterProcessReadWriteLock
+   InterProcessSemaphoreMutex</code></p>
+<ol>
+<li>
+<p>Revocable</p>
+</li>
+<li>
+<p>Lease</p>
+</li>
+<li>
+<p>Revocable</p>
+</li>
+<li>
+<p>RevocationListener</p>
+</li>
+<li>
+<p>RevocationSpec</p>
+</li>
+<li>
+<p>LockinternalsDriver 与zookeeper交互</p>
+</li>
+<li>
+<p>LockInternalsSorter 对节点进行排序的</p>
+</li>
+</ol>
+<p>疑问：</p>
+<ol>
+<li>
+<p>当线程A没有获得到锁，把路径删除的时候，监听A的线程的时候会不会以为线程A释放了锁。</p>
+</li>
+<li>
+<p>有序临时节点的命名其中有一段是用来表示节点顺序的 0000000000，一共10位，每次有新的线程尝试获取锁的时候，就会产生一个新的有序临时节点，名称在最大的序号后面加1，那么，这个数据超过长度怎么办？</p>
+</li>
+</ol>
+                
+                  
+                
+              
               
                 
 
@@ -381,9 +462,9 @@
       
     </div>
     
-      <script src="/assets/javascripts/application.39abc4af.js"></script>
+      <script src="../../assets/javascripts/application.39abc4af.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"/"}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
   </body>

@@ -3,7 +3,8 @@ theme: material
 nav:
   - Home: index.md
   - zookeeper学习: 
-    - zookeeper常用命令: zookeeper/command.md
+    - zookeeper常用命令: zookeeper/command.md\
+    - curator: zookeeper/curator.md
   - dubbo学习:
     - draft: dubbo/draft.md
     - ChannelBuffer: dubbo/channelBuffer.md

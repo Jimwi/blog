@@ -36,7 +36,7 @@
     
     
       
-        <title>zookeeper常用命令 - JImwi Chen's Blog</title>
+        <title>Slf4j api - JImwi Chen's Blog</title>
       
     
     
@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#zookeeper" tabindex="1" class="md-skip">
+      <a href="#sl4j-api" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -100,7 +100,7 @@
               JImwi Chen's Blog
             </span>
             <span class="md-header-nav__topic">
-              zookeeper常用命令
+              Slf4j api
             </span>
           
         </div>
@@ -178,12 +178,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       zookeeper学习
@@ -199,49 +197,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        zookeeper常用命令
-      </label>
-    
-    <a href="./" title="zookeeper常用命令" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../zookeeper/command/" title="zookeeper常用命令" class="md-nav__link">
       zookeeper常用命令
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#zkclish" title="zkCli.sh 登录服务端" class="md-nav__link">
-    zkCli.sh 登录服务端
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -251,7 +211,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../curator 学习笔记/" title="curator" class="md-nav__link">
+    <a href="../../zookeeper/curator 学习笔记/" title="curator" class="md-nav__link">
       curator
     </a>
   </li>
@@ -444,15 +404,13 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#zkclish" title="zkCli.sh 登录服务端" class="md-nav__link">
-    zkCli.sh 登录服务端
+  <a href="#sl4j-api" title="sl4j-api 结构" class="md-nav__link">
+    sl4j-api 结构
   </a>
   
 </li>
@@ -474,168 +432,23 @@
               
                 
                 
-                <h1 id="zookeeper">zookeeper 命令</h1>
-<h2 id="zkclish">zkCli.sh 登录服务端</h2>
-<ol>
-<li>
-<p><code>./zkCli*sh -timeout 3000 -server localhost:2181 -r</code><br />
-<code>-r readonly</code><br />
-    默认 -timeout 3000 -server localhost:2181</p>
-</li>
-<li>
-<p><code>ls path [watch]</code><br />
-    列出指定节点下的所有一级子节点。</p>
-</li>
-<li>
-<p><code>ls2 path [watch]</code><br />
-    ls + stat</p>
-</li>
-<li>
-<p><code>get path [watch]</code><br />
-    列出节点的数据 + stat</p>
-</li>
-<li>
-<p><code>set path data [version]</code><br />
-    给节点添加数据或者修改节点的数据。</p>
-</li>
-<li>
-<p><code>create [-s] [-e] path data acl</code><br />
-    创建节点<br />
-<code>-s:</code> 表示节点为顺序节点<br />
-<code>-e:</code> 表示节点为临时节点<br />
-<code>acl:</code> 访问控制列表  </p>
-</li>
-<li>
-<p><code>delete path [watch]</code><br />
-    删除节点</p>
-</li>
-<li>
-<p><code>stat path [watch]</code>
-列出节点信息  </p>
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>cZxid = 0x31</code></td>
-<td>节点被创建时的事物的ID</td>
-</tr>
-<tr>
-<td><code>ctime = Sat Mar 16 15:38:34 CST 2019</code></td>
-<td>创建时间</td>
-</tr>
-<tr>
-<td><code>mZxid = 0x31</code></td>
-<td>节点最后一次被修改时的事物的ID</td>
-</tr>
-<tr>
-<td><code>mtime = Sat Mar 16 15:38:34 CST 2019</code></td>
-<td>最后一次修改时间</td>
-</tr>
-<tr>
-<td><code>pZxid = 0x31</code></td>
-<td>子节点列表最近一次呗修改的事物ID</td>
-</tr>
-<tr>
-<td><code>cversion = 0</code></td>
-<td>子节点版本号</td>
-</tr>
-<tr>
-<td><code>dataVersion = 0</code></td>
-<td>数据版本号</td>
-</tr>
-<tr>
-<td><code>aclVersion = 0</code></td>
-<td>ACL版本号</td>
-</tr>
-<tr>
-<td><code>ephemeralOwner = 0x0</code></td>
-<td>创建临时节点的事物ID，持久节点事物为0</td>
-</tr>
-<tr>
-<td><code>dataLength = 22</code></td>
-<td>数据长度，每个节点都可保存数据</td>
-</tr>
-<tr>
-<td><code>numChildren = 0</code></td>
-<td>子节点的个数</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p><code>listquota path</code><br />
-    列出节点的限制</p>
-</li>
-<li>
-<p><code>setquota -n|-b val path</code><br />
-    设置节点的限制<br />
-<code>-n:</code> 表示子节点的最大个数<br />
-<code>-b:</code> 表示数据值的最大长度  </p>
-</li>
-<li>
-<p><code>delquota [-n|-b] path</code><br />
-    删除节点的限制  </p>
-</li>
-<li>
-<p><code>setAcl path acl</code><br />
-    设置节点的权限<br />
-    acl格式:  <code>schema:id:permision</code><br />
-<code>schema:</code> ip|digest<br />
-<code>id:</code> ip|userName:string<br />
-<code>string:</code> 字符串，通过一定规则得到的<br />
-<code>permision:</code> crwda<br />
-<code>c:</code> create 创建子节点<br />
-<code>r:</code> read 获得节点数据和子节点列表<br />
-<code>w:</code> write 更新节点数据<br />
-<code>d:</code> delete 删除子节点<br />
-<code>a:</code> admin 设置节点的ACL  </p>
-</li>
-<li>
-<p><code>getAcl path</code><br />
-    获得节点的权限的列表  </p>
-</li>
-<li>
-<p><code>sync path</code>  </p>
-</li>
-<li>
-<p><code>rmr pat</code><br />
-    递归删除节点  </p>
-</li>
-<li>
-<p><code>printwatches on|off</code>  </p>
-</li>
-<li>
-<p><code>addauth scheme auth</code><br />
-    注册会话授权信息<br />
-<code>schema: ip:digest</code><br />
-<code>auth: ip|username:password</code></p>
-</li>
-<li>
-<p><code>history</code><br />
-    历史命令  </p>
-</li>
-<li>
-<p><code>redo cmdno</code><br />
-    重新执行命令* cmdno为 history输出的命令号  </p>
-</li>
-<li>
-<p><code>quit</code><br />
-    退出客户端  </p>
-</li>
-<li>
-<p><code>close</code><br />
-    关闭连接，不退出可客户端  </p>
-</li>
-<li>
-<p><code>connect host:port</code><br />
-    连接服务端  </p>
-</li>
-</ol>
+                  <h1>Slf4j api</h1>
+                
+                <h2 id="sl4j-api">sl4j-api 结构</h2>
+<pre><code class="java">LoggerFactory  
+
+Logger
+
+MarkerFactory
+
+Marker
+
+MDC
+
+ILoggerFactory
+
+IMarkerFactory
+</code></pre>
                 
                   
                 
@@ -652,41 +465,6 @@
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../.." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                Home
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../curator 学习笔记/" title="curator" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                curator
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

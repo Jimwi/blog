@@ -1,4 +1,6 @@
 1. dubbo启动过程
+
+
   1.1. 服务端
         #  spring 读取配置文件，读取到<dubbo:service />的时候,会创建一个ServiceBean。
             ServiceBean是一个InitializingBean，创建完成后，spring会调用afterPropertiesSet()方法。

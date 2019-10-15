@@ -9,6 +9,7 @@ nav:
     - dubbo配置: dubbo/dubbo-config.md
     - draft: dubbo/draft.md
     - ChannelBuffer: dubbo/channelBuffer.md
+    - dubbo启动过程: dubbo/start.md
   - docker 学习笔记: 
     - getStarted: docker/getStarted.md
   - 加解密:

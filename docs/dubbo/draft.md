@@ -25,3 +25,16 @@ progress
     12.1 dubbo-serialization-api  90%
     12.2 dubbo-serialization-hessian2 90%
 13. dubbb-container 100%
+
+
+2019-09-30
+问题dubboProtocol，registryProtocol是在什么时候创建的。
+
+一个interface对应对应一个RegistryDirectory
+
+
+1. registryProtocol是什么时候放到 referenceBean里面的
+   
+2. dubboProtocol 什么时候放到registryProtocol里面的
+   
+3. injvmProtocol 什么时候放到registryProtocol里面的 ？？？？

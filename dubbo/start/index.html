@@ -423,8 +423,9 @@
                   <h1>dubbo启动过程</h1>
                 
                 <ol>
-<li>dubbo启动过程
-  1.1. 服务端
+<li>dubbo启动过程</li>
+</ol>
+<p>1.1. 服务端
         #  spring 读取配置文件，读取到<dubbo:service />的时候,会创建一个ServiceBean。
             ServiceBean是一个InitializingBean，创建完成后，spring会调用afterPropertiesSet()方法。
             afterPropertiesSet里面有export()方法，从而启动服务。注册服务。
@@ -435,8 +436,7 @@
                 在invoker上加Listener （Filter和Listener的顺序是不定的）
                 通过invoker创建exporter，将exporter缓存起来
         #  启动netty服务端，（读取第一个<dubbo:service />是启动服务器）
-        #  将exporter的信息注册到zookeeper上</li>
-</ol>
+        #  将exporter的信息注册到zookeeper上</p>
 <p>1.2. 客户端
         # spring 读取配置文件，读取到<dubbo:reference />的时候,会创建一个ReferenceBean。
           ReferenceBean是一个InitializingBean，创建完成后，spring会调用afterPropertiesSet()方法。

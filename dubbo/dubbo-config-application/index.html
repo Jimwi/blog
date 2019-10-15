@@ -36,7 +36,7 @@
     
     
       
-        <title>getStarted - JImwi Chen's Blog</title>
+        <title>ApplicationConfig - JImwi Chen's Blog</title>
       
     
     
@@ -75,6 +75,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#applicationconfig" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -96,7 +100,7 @@
               JImwi Chen's Blog
             </span>
             <span class="md-header-nav__topic">
-              getStarted
+              ApplicationConfig
             </span>
           
         </div>
@@ -243,7 +247,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/dubbo-config/" title="dubbo配置" class="md-nav__link">
+    <a href="../dubbo-config/" title="dubbo配置" class="md-nav__link">
       dubbo配置
     </a>
   </li>
@@ -255,7 +259,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/draft/" title="draft" class="md-nav__link">
+    <a href="../draft/" title="draft" class="md-nav__link">
       draft
     </a>
   </li>
@@ -267,7 +271,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/channelBuffer/" title="ChannelBuffer" class="md-nav__link">
+    <a href="../channelBuffer/" title="ChannelBuffer" class="md-nav__link">
       ChannelBuffer
     </a>
   </li>
@@ -279,7 +283,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/start/" title="dubbo启动过程" class="md-nav__link">
+    <a href="../start/" title="dubbo启动过程" class="md-nav__link">
       dubbo启动过程
     </a>
   </li>
@@ -366,12 +370,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       shiro
@@ -387,18 +389,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="getStarted" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../shiro/getStarted/" title="getStarted" class="md-nav__link">
       getStarted
     </a>
-    
   </li>
 
         
@@ -414,19 +409,50 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#compiler" title="compiler" class="md-nav__link">
+    compiler
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>getStarted</h1>
-                
-                <ol>
-<li>源码分析</li>
-</ol>
-<p>本文分析的源码版本是1.4.1</p>
-<p>源码结构</p>
+                <h1 id="applicationconfig">ApplicationConfig</h1>
+<pre><code class="xml">&lt;dubbo:application name=&quot;demo-application&quot; version=&quot;1.0.0&quot; owner=&quot;xun&quot; organization=&quot;qudian&quot; architecture=&quot;&quot; environment=&quot;dev&quot; compiler=&quot;javassist&quot; logger=&quot;slf4j&quot; monitor=&quot;&quot; registry=&quot;&quot;/&gt;
+</code></pre>
+
+<h4 id="compiler">compiler</h4>
+<p>compiler是Dubbo生成动态代理的时候使用的技术。见org.apache.dubbo.common.compiler.Compiler拓展。Dubbo提供了两种实现JdkCompiler，JavassistCompiler的实现</p>
+<p>logger是dubbo的日志输出方式，见org.apache.dubbo.common.logger.LoggerAdapter拓展，Dubbo提供了jcl，jdk，log4j，log4j2，slf4j的实现</p>
                 
                   
                 
@@ -443,27 +469,6 @@
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../../cipher/java-cipher/" title="java提供的加解密工具类" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                java提供的加解密工具类
-              </span>
-            </div>
-          </a>
-        
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

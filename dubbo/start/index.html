@@ -36,7 +36,7 @@
     
     
       
-        <title>getStarted - JImwi Chen's Blog</title>
+        <title>dubbo启动过程 - JImwi Chen's Blog</title>
       
     
     
@@ -96,7 +96,7 @@
               JImwi Chen's Blog
             </span>
             <span class="md-header-nav__topic">
-              getStarted
+              dubbo启动过程
             </span>
           
         </div>
@@ -222,10 +222,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       dubbo学习
@@ -243,7 +245,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/dubbo-config/" title="dubbo配置" class="md-nav__link">
+    <a href="../dubbo-config/" title="dubbo配置" class="md-nav__link">
       dubbo配置
     </a>
   </li>
@@ -255,7 +257,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/draft/" title="draft" class="md-nav__link">
+    <a href="../draft/" title="draft" class="md-nav__link">
       draft
     </a>
   </li>
@@ -267,7 +269,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/channelBuffer/" title="ChannelBuffer" class="md-nav__link">
+    <a href="../channelBuffer/" title="ChannelBuffer" class="md-nav__link">
       ChannelBuffer
     </a>
   </li>
@@ -277,11 +279,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../dubbo/start/" title="dubbo启动过程" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="dubbo启动过程" class="md-nav__link md-nav__link--active">
       dubbo启动过程
     </a>
+    
   </li>
 
         
@@ -366,12 +375,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       shiro
@@ -387,18 +394,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="getStarted" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../shiro/getStarted/" title="getStarted" class="md-nav__link">
       getStarted
     </a>
-    
   </li>
 
         
@@ -420,13 +420,36 @@
               
                 
                 
-                  <h1>getStarted</h1>
+                  <h1>dubbo启动过程</h1>
                 
                 <ol>
-<li>源码分析</li>
+<li>dubbo启动过程
+  1.1. 服务端
+        #  spring 读取配置文件，读取到<dubbo:service />的时候,会创建一个ServiceBean。
+            ServiceBean是一个InitializingBean，创建完成后，spring会调用afterPropertiesSet()方法。
+            afterPropertiesSet里面有export()方法，从而启动服务。注册服务。
+        #  判断是否延迟加载，如果是延时加载，就创建一个定时任务。
+        #  创建invoker。根据 ”接口真正的的实现“ 创建invoker
+        #  创建exporter
+                在invoker上加Filter
+                在invoker上加Listener （Filter和Listener的顺序是不定的）
+                通过invoker创建exporter，将exporter缓存起来
+        #  启动netty服务端，（读取第一个<dubbo:service />是启动服务器）
+        #  将exporter的信息注册到zookeeper上</li>
 </ol>
-<p>本文分析的源码版本是1.4.1</p>
-<p>源码结构</p>
+<p>1.2. 客户端
+        # spring 读取配置文件，读取到<dubbo:reference />的时候,会创建一个ReferenceBean。
+          ReferenceBean是一个InitializingBean，创建完成后，spring会调用afterPropertiesSet()方法。
+          afterPropertiesSet里面有getObject()方法，从而初始化客户端代理。
+        # 创建代理
+            # 为每一个interface创建一个RegistryDirectory。
+            # 订阅zookeeper的注册信息。
+            # 根据zookeeper注册的信息，创建invoker。
+                通过dubboProtocol 创建netty客户端。
+                创建invoker
+                将nvoker保存到RegistryDirectory中。
+            # 用cluster将directory中的invoker合成一个invoker，并缓存起来。
+            # 创建invoker的代理。并缓存起来。</p>
                 
                   
                 
@@ -447,7 +470,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../cipher/java-cipher/" title="java提供的加解密工具类" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../channelBuffer/" title="ChannelBuffer" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -456,11 +479,25 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                java提供的加解密工具类
+                ChannelBuffer
               </span>
             </div>
           </a>
         
+        
+          <a href="../../docker/getStarted/" title="getStarted" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                getStarted
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>

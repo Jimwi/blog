@@ -36,7 +36,7 @@
     
     
       
-        <title>getStarted - JImwi Chen's Blog</title>
+        <title>MonitorConfig - JImwi Chen's Blog</title>
       
     
     
@@ -75,6 +75,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#monitorconfig" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -96,7 +100,7 @@
               JImwi Chen's Blog
             </span>
             <span class="md-header-nav__topic">
-              getStarted
+              MonitorConfig
             </span>
           
         </div>
@@ -243,7 +247,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/dubbo-config/" title="dubbo配置" class="md-nav__link">
+    <a href="../dubbo-config/" title="dubbo配置" class="md-nav__link">
       dubbo配置
     </a>
   </li>
@@ -255,7 +259,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/draft/" title="draft" class="md-nav__link">
+    <a href="../draft/" title="draft" class="md-nav__link">
       draft
     </a>
   </li>
@@ -267,7 +271,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/channelBuffer/" title="ChannelBuffer" class="md-nav__link">
+    <a href="../channelBuffer/" title="ChannelBuffer" class="md-nav__link">
       ChannelBuffer
     </a>
   </li>
@@ -279,7 +283,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../dubbo/start/" title="dubbo启动过程" class="md-nav__link">
+    <a href="../start/" title="dubbo启动过程" class="md-nav__link">
       dubbo启动过程
     </a>
   </li>
@@ -366,12 +370,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       shiro
@@ -387,18 +389,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="getStarted" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../shiro/getStarted/" title="getStarted" class="md-nav__link">
       getStarted
     </a>
-    
   </li>
 
         
@@ -414,19 +409,37 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>getStarted</h1>
-                
-                <ol>
-<li>源码分析</li>
-</ol>
-<p>本文分析的源码版本是1.4.1</p>
-<p>源码结构</p>
+                <h1 id="monitorconfig">MonitorConfig</h1>
+<pre><code class="xml">&lt;dubbo:monitor protocol=&quot;&quot; address=&quot;&quot; interval=&quot;&quot; username=&quot;&quot; password=&quot;&quot; group=&quot;&quot; version=&quot;&quot; default=&quot;&quot;/&gt;
+</code></pre>
+
+<p>见org.apache.dubbo.monitor.MonitorFactory拓展。</p>
+<p>Dubbo提供了DubboMonitor实现，DubboMonitor只是本地的实现，它会定时向监控中心发送监控数据。监控中心的也需要实现一个</p>
+<p>MonitorService。这个dubbo没有实现。 </p>
+<p>protocol="registry"  或者 protocol="dubbo" address="127.0.0.1:20880"</p>
+<p>interval="60000"   向监控中心发送数据的时间间隔，默认1分钟</p>
+<p>目前好像不用这个了，改用Metrics。</p>
                 
                   
                 
@@ -443,27 +456,6 @@
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../../cipher/java-cipher/" title="java提供的加解密工具类" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                java提供的加解密工具类
-              </span>
-            </div>
-          </a>
-        
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
